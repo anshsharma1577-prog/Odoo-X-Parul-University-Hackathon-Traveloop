@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveloop - Community</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♾️</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-infinity"></i></div>
+                <h2>traveloop</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a href="budget.html" class="nav-item"><i class="fa-solid fa-suitcase-rolling"></i><span>Budget</span></a>
+                <a href="create-trip.html" class="nav-item"><i class="fa-solid fa-plus-circle"></i><span>Create Trip</span></a>
+                <a href="activities.html" class="nav-item"><i class="fa-regular fa-compass"></i><span>Explore</span></a>
+                <a href="community.html" class="nav-item active"><i class="fa-solid fa-users"></i><span>Community</span></a>
+                <a href="packing-list.html" class="nav-item"><i class="fa-solid fa-list-check"></i><span>Packing List</span></a>
+            </nav>
+            <nav class="nav-menu bottom-menu">
+                <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button class="hamburger-btn icon-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                    <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search community, tags, users...">
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn notification"><i class="fa-regular fa-bell"></i><span class="badge"></span></button>
+                    <div class="profile-dropdown-container">
+                        <div class="profile" onclick="toggleDropdown()">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=60" alt="John Doe">
+                            <span>John <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                        <div class="profile-dropdown-menu" id="profileDropdown">
+                            <a href="budget.html"><i class="fa-solid fa-suitcase"></i> My Trips</a>
+                            <a href="#"><i class="fa-solid fa-plane-departure"></i> Upcoming Trips</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#"><i class="fa-solid fa-arrow-up-right-dots"></i> Upgrade to Pro</a>
+                            <a href="login.html" class="signout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="display: flex; gap: 32px; align-items: flex-start;">
+                <!-- Main Feed -->
+                <div style="flex: 1;">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h2>Community</h2>
+                            <p>Connect with other travelers and share facts!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="filters-bar">
+                        <button class="filter-btn active">For You</button>
+                        <button class="filter-btn">Following</button>
+                        <button class="filter-btn">Travel Facts</button>
+                        <button class="filter-btn">Photos</button>
+                    </div>
+
+                    <!-- Create Post Box -->
+                    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-lg); margin-bottom: 24px; box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; gap: 16px;">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=60" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                            <textarea id="communityPostInput" class="input-control" placeholder="Share a travel tip, fact, or photo..." rows="2" style="border: none; background: transparent; padding: 8px 0; resize: none; font-size: 1.05rem;"></textarea>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                            <div style="color: var(--primary-color); display: flex; gap: 16px; font-size: 1.2rem; cursor: pointer;">
+                                <i class="fa-regular fa-image"></i>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <i class="fa-regular fa-face-smile"></i>
+                            </div>
+                            <button class="btn-primary" onclick="postCommunityUpdate()" style="padding: 8px 24px; border-radius: 20px;">Post</button>
+                        </div>
+                    </div>
+                    
+                    <div id="communityFeed">
+                        <div class="post-card">
+                            <div class="post-header">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=60">
+                                <div>
+                                    <h4 style="font-size: 1rem;">Sarah Wilson</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">@sarah.travels • 2h ago</p>
+                                </div>
+                            </div>
+                            <p>Captured this sunset in Santorini! Absolutely magical ✨ Can't wait to explore more tomorrow.</p>
+                            <img src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=600&q=80" class="post-image">
+                            <div style="display: flex; gap: 24px; color: var(--text-muted); font-size: 0.95rem;">
+                                <span onclick="toggleLike(this)" style="color: #EF4444; cursor: pointer; transition: transform 0.2s;"><i class="fa-solid fa-heart"></i> <b class="count">124</b></span>
+                                <span style="cursor: pointer;"><i class="fa-regular fa-comment"></i> 18</span>
+                                <span onclick="toggleBookmark(this)" style="cursor: pointer; margin-left: auto; transition: transform 0.2s;"><i class="fa-regular fa-bookmark"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="post-card">
+                            <div class="post-header">
+                                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=100&q=60">
+                                <div>
+                                    <h4 style="font-size: 1rem;">Mike Johnson</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">@mikeadventures • 4h ago</p>
+                                </div>
+                            </div>
+                            <p>Completed the Everest Base Camp trek! What an experience. The views were breathtaking and the community of hikers along the way was incredible.</p>
+                            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80" class="post-image">
+                            <div style="display: flex; gap: 24px; color: var(--text-muted); font-size: 0.95rem;">
+                                <span onclick="toggleLike(this)" style="cursor: pointer; transition: transform 0.2s;"><i class="fa-regular fa-heart"></i> <b class="count">89</b></span>
+                                <span style="cursor: pointer;"><i class="fa-regular fa-comment"></i> 12</span>
+                                <span onclick="toggleBookmark(this)" style="cursor: pointer; margin-left: auto; transition: transform 0.2s;"><i class="fa-regular fa-bookmark"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar (Facts & Trending) -->
+                <div style="width: 320px; display: flex; flex-direction: column; gap: 24px;">
+                    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                        <h3 style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-lightbulb" style="color: #F59E0B;"></i> Active Travel Facts</h3>
+                        
+                        <div style="background: rgba(245, 158, 11, 0.1); padding: 16px; border-radius: 8px; border-left: 3px solid #F59E0B; margin-bottom: 16px;">
+                            <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5;"><strong style="color: #F59E0B;">Fact #1:</strong> France is the most visited country in the world, welcoming over 89 million tourists annually.</p>
+                        </div>
+                        
+                        <div style="background: rgba(56, 189, 248, 0.1); padding: 16px; border-radius: 8px; border-left: 3px solid var(--primary-color); margin-bottom: 16px;">
+                            <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5;"><strong style="color: var(--primary-color);">Fact #2:</strong> There are over 820 languages spoken in Papua New Guinea, making it the most linguistically diverse place on Earth!</p>
+                        </div>
+
+                        <button class="filter-btn" style="width: 100%; text-align: center; color: var(--primary-color); border-color: var(--primary-color);">Generate New Fact</button>
+                    </div>
+
+                    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                        <h3 style="margin-bottom: 16px;">Trending Destinations</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: var(--text-dark);">#KyotoSpring</span>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">12.4K posts</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: var(--text-dark);">#SwissAlps</span>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">8.2K posts</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: var(--text-dark);">#BaliLife</span>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">5.1K posts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Interactive Like Logic
+        function toggleLike(element) {
+            const icon = element.querySelector('i');
+            const countObj = element.querySelector('.count');
+            let count = parseInt(countObj.innerText);
+
+            // Pop animation
+            element.style.transform = 'scale(1.2)';
+            setTimeout(() => element.style.transform = 'scale(1)', 150);
+
+            if (icon.classList.contains('fa-regular')) {
+                // Like
+                icon.classList.replace('fa-regular', 'fa-solid');
+                element.style.color = '#EF4444';
+                countObj.innerText = count + 1;
+            } else {
+                // Unlike
+                icon.classList.replace('fa-solid', 'fa-regular');
+                element.style.color = 'var(--text-muted)';
+                countObj.innerText = count - 1;
+            }
+        }
+
+        // Interactive Bookmark Logic
+        function toggleBookmark(element) {
+            const icon = element.querySelector('i');
+            element.style.transform = 'scale(1.2)';
+            setTimeout(() => element.style.transform = 'scale(1)', 150);
+
+            if (icon.classList.contains('fa-regular')) {
+                icon.classList.replace('fa-regular', 'fa-solid');
+                icon.style.color = 'var(--primary-color)';
+                if(window.showCustomModal) showCustomModal("Post saved to bookmarks!", "alert");
+            } else {
+                icon.classList.replace('fa-solid', 'fa-regular');
+                icon.style.color = 'var(--text-muted)';
+            }
+        }
+
+        // Posting new update
+        function postCommunityUpdate() {
+            const input = document.getElementById('communityPostInput');
+            const text = input.value.trim();
+            if (!text) {
+                if(window.showCustomModal) showCustomModal("Please write something first!", "alert");
+                return;
+            }
+
+            const feed = document.getElementById('communityFeed');
+            const newPostHTML = `
+                <div class="post-card" style="animation: fadeUp 0.5s ease forwards;">
+                    <div class="post-header">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=60">
+                        <div>
+                            <h4 style="font-size: 1rem;">John (You)</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">@john.travels • Just now</p>
+                        </div>
+                    </div>
+                    <p>${text}</p>
+                    <div style="display: flex; gap: 24px; color: var(--text-muted); font-size: 0.95rem; margin-top: 16px;">
+                        <span onclick="toggleLike(this)" style="cursor: pointer; transition: transform 0.2s;"><i class="fa-regular fa-heart"></i> <b class="count">0</b></span>
+                        <span style="cursor: pointer;"><i class="fa-regular fa-comment"></i> 0</span>
+                        <span onclick="toggleBookmark(this)" style="cursor: pointer; margin-left: auto; transition: transform 0.2s;"><i class="fa-regular fa-bookmark"></i></span>
+                    </div>
+                </div>
+            `;
+            
+            feed.insertAdjacentHTML('afterbegin', newPostHTML);
+            input.value = ''; // clear
+            
+            if(window.showCustomModal) showCustomModal("Travel fact posted successfully!", "alert");
+        }
+
+        // Dynamically generate 50+ dummy community posts
+        document.addEventListener('DOMContentLoaded', () => {
+            const feed = document.getElementById('communityFeed');
+            const names = ["Alex Chen", "Emma Watson", "David Smith", "Sophie Martin", "Lucas Silva", "Maria Garcia", "James Lee"];
+            const handles = ["@alextrac", "@emmatravels", "@davesmith", "@sophiemart", "@lucas.explore", "@mariagoes", "@jameslee"];
+            const texts = [
+                "Just found the most amazing hidden cafe in Rome! ☕️",
+                "Does anyone have recommendations for a 3-day itinerary in Kyoto?",
+                "The northern lights in Norway were absolutely breathtaking tonight.",
+                "Flight delayed by 4 hours... at least the lounge has good food! ✈️",
+                "I highly recommend taking the train through the Swiss Alps instead of flying. The views are incredible.",
+                "First time trying authentic Pad Thai in Bangkok. Life changing! 🍜",
+                "Hiking up Machu Picchu was tough but 100% worth it. Remember to acclimatize properly!",
+                "Has anyone used the Eurail pass recently? Is it still worth the price?",
+                "I just tried to pack 2 weeks worth of clothes into a single carry-on using the ranger roll method. It actually worked!",
+                "Watching the sunrise over Angkor Wat today... simply speechless."
+            ];
+            const images = [
+                "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80"
+            ];
+            const avatars = [
+                "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=60",
+                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=60",
+                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=60",
+                "https://images.unsplash.com/photo-1619895862022-09114b41f16f?auto=format&fit=crop&w=100&q=60"
+            ];
+
+            let htmlString = '';
+            for(let i=0; i<50; i++) {
+                const nameIdx = Math.floor(Math.random() * names.length);
+                const textIdx = Math.floor(Math.random() * texts.length);
+                const imgIdx = Math.floor(Math.random() * images.length);
+                const avIdx = Math.floor(Math.random() * avatars.length);
+                const likes = Math.floor(Math.random() * 500) + 10;
+                const comments = Math.floor(Math.random() * 50);
+                const time = Math.floor(Math.random() * 23) + 1;
+                
+                // Randomly decide if this post has an image
+                const hasImage = Math.random() > 0.4; // 60% chance of image
+                const imgTag = hasImage ? `<img src="${images[imgIdx]}" class="post-image">` : '';
+
+                htmlString += `
+                    <div class="post-card">
+                        <div class="post-header">
+                            <img src="${avatars[avIdx]}">
+                            <div>
+                                <h4 style="font-size: 1rem;">${names[nameIdx]}</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">${handles[nameIdx]} • ${time}h ago</p>
+                            </div>
+                        </div>
+                        <p>${texts[textIdx]}</p>
+                        ${imgTag}
+                        <div style="display: flex; gap: 24px; color: var(--text-muted); font-size: 0.95rem;">
+                            <span onclick="toggleLike(this)" style="cursor: pointer; transition: transform 0.2s;"><i class="fa-regular fa-heart"></i> <b class="count">${likes}</b></span>
+                            <span style="cursor: pointer;"><i class="fa-regular fa-comment"></i> ${comments}</span>
+                            <span onclick="toggleBookmark(this)" style="cursor: pointer; margin-left: auto; transition: transform 0.2s;"><i class="fa-regular fa-bookmark"></i></span>
+                        </div>
+                    </div>
+                `;
+            }
+            feed.insertAdjacentHTML('beforeend', htmlString);
+        });
+    </script>
+</body>
+</html>
