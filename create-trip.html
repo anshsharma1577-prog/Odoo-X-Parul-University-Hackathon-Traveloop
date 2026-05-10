@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveloop - Create Trip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♾️</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-infinity"></i></div>
+                <h2>traveloop</h2>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-house"></i><span>Dashboard</span>
+                </a>
+                <a href="budget.html" class="nav-item">
+                    <i class="fa-solid fa-suitcase-rolling"></i><span>Budget</span>
+                </a>
+                <a href="create-trip.html" class="nav-item active">
+                    <i class="fa-solid fa-plus-circle"></i><span>Create Trip</span>
+                </a>
+                <a href="activities.html" class="nav-item">
+                    <i class="fa-regular fa-compass"></i><span>Explore</span>
+                </a>
+                <a href="community.html" class="nav-item">
+                    <i class="fa-solid fa-users"></i><span>Community</span>
+                </a>
+                <a href="packing-list.html" class="nav-item">
+                    <i class="fa-solid fa-list-check"></i><span>Packing List</span>
+                </a>
+            </nav>
+
+            <nav class="nav-menu bottom-menu">
+                <a href="settings.html" class="nav-item">
+                    <i class="fa-solid fa-gear"></i><span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <button class="hamburger-btn icon-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                    <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search places, trips, activities...">
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn notification"><i class="fa-regular fa-bell"></i><span class="badge"></span></button>
+                    <div class="profile-dropdown-container">
+                        <div class="profile" onclick="toggleDropdown()">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=60" alt="John Doe">
+                            <span>John <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                        <div class="profile-dropdown-menu" id="profileDropdown">
+                            <a href="budget.html"><i class="fa-solid fa-suitcase"></i> My Trips</a>
+                            <a href="#"><i class="fa-solid fa-plane-departure"></i> Upcoming Trips</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#"><i class="fa-solid fa-arrow-up-right-dots"></i> Upgrade to Pro</a>
+                            <a href="login.html" class="signout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>Create New Trip</h2>
+                        <p>Let's start with the basic information</p>
+                    </div>
+                </div>
+                
+                <div class="stepper-layout">
+                    <div class="stepper-nav">
+                        <div class="step-item active">
+                            <div class="step-num">1</div><span>Trip Details</span>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div><span>Add Destinations</span>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div><span>Activities</span>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">4</div><span>Budget</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <h3 style="margin-bottom: 24px;">Trip Details</h3>
+                        
+                        <!-- Step 1: Details -->
+                        <div id="step-1" class="form-step">
+                            <div style="margin-bottom: 24px;">
+                                <label class="input-label">Trip Name</label>
+                                <input type="text" class="input-control" value="European Explorer" id="tripName">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="input-label">Start Date</label>
+                                    <input type="date" class="input-control" value="2024-05-10" id="tripStart">
+                                </div>
+                                <div class="form-col">
+                                    <label class="input-label">End Date</label>
+                                    <input type="date" class="input-control" value="2024-05-24" id="tripEnd">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 24px;">
+                                <label class="input-label">Description</label>
+                                <textarea class="input-control" rows="4">A 15-day trip across Europe to explore amazing cultures, food and scenic beauty.</textarea>
+                            </div>
+                            
+                            <div style="margin-bottom: 32px;">
+                                <label class="input-label">Cover Photo</label>
+                                <div style="display: flex; gap: 16px; align-items: center;">
+                                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=150&q=60" style="width: 140px; height: 90px; border-radius: 8px; object-fit: cover;">
+                                    <button class="filter-btn" style="color: var(--primary-color); border-color: var(--primary-color);">Change Photo</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Destinations -->
+                        <div id="step-2" class="form-step" style="display: none;">
+                            <div style="margin-bottom: 24px;">
+                                <label class="input-label">Search Cities/Countries</label>
+                                <input type="text" class="input-control" placeholder="e.g. Paris, London, Rome...">
+                                <button class="filter-btn" style="margin-top: 12px; color: var(--primary-color); border-color: var(--primary-color);">+ Add Destination</button>
+                            </div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px;">
+                                <span class="tag" style="padding: 8px 16px; font-size: 0.95rem;">Paris, France <i class="fa-solid fa-xmark" style="margin-left: 8px; cursor: pointer;"></i></span>
+                                <span class="tag" style="padding: 8px 16px; font-size: 0.95rem;">Rome, Italy <i class="fa-solid fa-xmark" style="margin-left: 8px; cursor: pointer;"></i></span>
+                                <span class="tag" style="padding: 8px 16px; font-size: 0.95rem;">Barcelona, Spain <i class="fa-solid fa-xmark" style="margin-left: 8px; cursor: pointer;"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Activities -->
+                        <div id="step-3" class="form-step" style="display: none;">
+                            <label class="input-label" style="margin-bottom: 12px;">What kind of activities do you enjoy?</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px;">
+                                <label style="display: flex; align-items: center; gap: 12px; background: var(--bg-card); padding: 16px; border-radius: 8px; cursor: pointer; border: 1px solid var(--border-color);">
+                                    <input type="checkbox" checked class="custom-check" style="width: 20px; height: 20px;">
+                                    <span style="color: var(--text-dark); font-weight: 500;"><i class="fa-solid fa-camera" style="margin-right: 8px; color: var(--primary-color);"></i>Sightseeing</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 12px; background: var(--bg-card); padding: 16px; border-radius: 8px; cursor: pointer; border: 1px solid var(--border-color);">
+                                    <input type="checkbox" checked class="custom-check" style="width: 20px; height: 20px;">
+                                    <span style="color: var(--text-dark); font-weight: 500;"><i class="fa-solid fa-utensils" style="margin-right: 8px; color: var(--primary-color);"></i>Culinary & Food</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 12px; background: var(--bg-card); padding: 16px; border-radius: 8px; cursor: pointer; border: 1px solid var(--border-color);">
+                                    <input type="checkbox" class="custom-check" style="width: 20px; height: 20px;">
+                                    <span style="color: var(--text-dark); font-weight: 500;"><i class="fa-solid fa-person-hiking" style="margin-right: 8px; color: var(--primary-color);"></i>Adventure & Nature</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 12px; background: var(--bg-card); padding: 16px; border-radius: 8px; cursor: pointer; border: 1px solid var(--border-color);">
+                                    <input type="checkbox" checked class="custom-check" style="width: 20px; height: 20px;">
+                                    <span style="color: var(--text-dark); font-weight: 500;"><i class="fa-solid fa-masks-theater" style="margin-right: 8px; color: var(--primary-color);"></i>Culture & History</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Budget -->
+                        <div id="step-4" class="form-step" style="display: none;">
+                            <div style="margin-bottom: 32px;">
+                                <label class="input-label">Total Estimated Budget (₹)</label>
+                                <div style="position: relative;">
+                                    <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 1.1rem;">₹</span>
+                                    <input type="number" class="input-control" value="450000" style="padding-left: 36px; font-size: 1.1rem; font-weight: bold; color: var(--primary-color);">
+                                </div>
+                                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;">We will use this to track your expenses automatically.</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <button class="filter-btn" style="color: #EF4444; border-color: #EF4444;" onclick="deleteTrip()">
+                                <i class="fa-solid fa-trash"></i> Delete Trip
+                            </button>
+                            <button class="btn-primary" id="nextStepBtn" onclick="nextStep()">Continue to Destinations <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        const stepNames = ["Trip Details", "Add Destinations", "Activities", "Budget"];
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                // Hide current form
+                document.getElementById(`step-${currentStep}`).style.display = 'none';
+                
+                // Remove active class from current step nav
+                document.querySelectorAll('.step-item')[currentStep - 1].classList.remove('active');
+                
+                currentStep++;
+                
+                // Show new form
+                document.getElementById(`step-${currentStep}`).style.display = 'block';
+                
+                // Add active class to new step nav
+                document.querySelectorAll('.step-item')[currentStep - 1].classList.add('active');
+                
+                // Update button text and step title dynamically
+                const btn = document.getElementById('nextStepBtn');
+                const title = document.querySelector('.step-content h3');
+                
+                title.textContent = stepNames[currentStep - 1];
+                
+                if (currentStep === totalSteps) {
+                    btn.innerHTML = 'Save & View Dashboard <i class="fa-solid fa-check" style="margin-left: 8px;"></i>';
+                    btn.onclick = saveTrip;
+                } else {
+                    btn.innerHTML = `Continue to ${stepNames[currentStep]} <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>`;
+                }
+                
+                // Optional success modal for progression
+                // showCustomModal(`Step ${currentStep}: ${stepNames[currentStep-1]} loaded successfully!`, 'alert');
+            }
+        }
+
+        function deleteTrip() {
+            showCustomModal("Are you sure you want to completely delete this trip? This action cannot be undone.", "confirm", () => {
+                showCustomModal("Trip deleted successfully.", "alert");
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            });
+        }
+
+        async function saveTrip() {
+            const tripName = document.getElementById('tripName').value;
+            const tripStart = document.getElementById('tripStart').value;
+            const tripEnd = document.getElementById('tripEnd').value;
+            
+            if (!tripName) return;
+
+            // Format date roughly (e.g. 2024-05-10 -> May 10, 2024)
+            const dateObj = new Date(tripStart);
+            const endDateObj = new Date(tripEnd);
+            const options = { month: 'short', day: 'numeric', year: 'numeric' };
+            const formattedStart = dateObj.toLocaleDateString('en-US', options);
+            const formattedEnd = endDateObj.toLocaleDateString('en-US', options);
+            const displayDate = `${formattedStart} - ${formattedEnd}`;
+
+            const requestBody = {
+                userId: 1, // hardcoded user
+                destination: tripName,
+                startDate: tripStart,
+                endDate: tripEnd,
+                totalBudget: 5000 // mock default
+            };
+
+            try {
+                // Post to API
+                const response = await fetch('http://localhost:3000/api/trips', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                if(!response.ok) throw new Error("Failed API call");
+                
+                // Show success modal then redirect
+                showCustomModal("Trip Successfully Saved to Database!", "alert");
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+
+            } catch (err) {
+                console.log("Using local mock save instead...", err);
+                const mockTripHTML = `
+                    <div class="trip-card">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=60">
+                        <div class="card-content">
+                            <h4>${tripName}</h4>
+                            <p>${displayDate}</p>
+                            <span class="tag">Just Added!</span>
+                        </div>
+                    </div>
+                `;
+                localStorage.setItem('traveloop_new_trip', mockTripHTML);
+                
+                showCustomModal("Trip Saved Locally!", "alert");
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
