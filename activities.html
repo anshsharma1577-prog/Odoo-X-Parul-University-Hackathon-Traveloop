@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveloop - Explore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♾️</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-infinity"></i></div>
+                <h2>traveloop</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a href="budget.html" class="nav-item"><i class="fa-solid fa-suitcase-rolling"></i><span>Budget</span></a>
+                <a href="create-trip.html" class="nav-item"><i class="fa-solid fa-plus-circle"></i><span>Create Trip</span></a>
+                <a href="activities.html" class="nav-item active"><i class="fa-regular fa-compass"></i><span>Explore</span></a>
+                <a href="community.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Community</span></a>
+                <a href="packing-list.html" class="nav-item"><i class="fa-solid fa-list-check"></i><span>Packing List</span></a>
+            </nav>
+            <nav class="nav-menu bottom-menu">
+                <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button class="hamburger-btn icon-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+                    <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search activities, e.g., Paragliding, Museum...">
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn notification"><i class="fa-regular fa-bell"></i><span class="badge"></span></button>
+                    <div class="profile-dropdown-container">
+                        <div class="profile" onclick="toggleDropdown()">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=60" alt="John Doe">
+                            <span>John <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                        <div class="profile-dropdown-menu" id="profileDropdown">
+                            <a href="budget.html"><i class="fa-solid fa-suitcase"></i> My Trips</a>
+                            <a href="#"><i class="fa-solid fa-plane-departure"></i> Upcoming Trips</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#"><i class="fa-solid fa-arrow-up-right-dots"></i> Upgrade to Pro</a>
+                            <a href="login.html" class="signout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h2>Activity Search</h2>
+                        <p>Find things to do in your destinations</p>
+                    </div>
+                </div>
+                
+                <div class="filters-bar">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Sight-seeing</button>
+                    <button class="filter-btn">Adventure</button>
+                    <button class="filter-btn">Food</button>
+                    <button class="filter-btn">Culture</button>
+                    <button class="filter-btn" style="margin-left: auto;" onclick="alert('Advanced Filter options (Price, Rating, Availability) coming soon!')"><i class="fa-solid fa-sliders"></i> Filters</button>
+                </div>
+                
+                <div class="activities-list" style="max-width: 800px;">
+                    <div class="activity-card" data-category="sight-seeing">
+                        <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Eiffel Tower Private Tour</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">Paris, France</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 4.8 (12k)</div>
+                        </div>
+                        <div class="activity-price">₹12,500</div>
+                        <button class="icon-btn" onclick="alert('Eiffel Tower Private Tour successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    
+                    <div class="activity-card" data-category="culture">
+                        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Louvre Museum VIP Pass</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">Paris, France</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 4.7 (8k)</div>
+                        </div>
+                        <div class="activity-price">₹10,200</div>
+                        <button class="icon-btn" onclick="alert('Louvre Museum VIP Pass successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    
+                    <div class="activity-card" data-category="sight-seeing">
+                        <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Seine Luxury River Cruise</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">Paris, France</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 4.6 (5k)</div>
+                        </div>
+                        <div class="activity-price">₹15,000</div>
+                        <button class="icon-btn" onclick="alert('Seine Luxury River Cruise successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+
+                    <div class="activity-card" data-category="adventure">
+                        <img src="https://images.unsplash.com/photo-1521684443916-271d471df42f?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Alpine Skydiving Adventure</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">Interlaken, Switzerland</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 4.9 (2k)</div>
+                        </div>
+                        <div class="activity-price">₹28,000</div>
+                        <button class="icon-btn" onclick="alert('Alpine Skydiving Adventure successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+
+                    <div class="activity-card" data-category="adventure">
+                        <img src="https://images.unsplash.com/photo-1560624052-449f5ddf0c31?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Exclusive Private Yacht</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px;">Santorini, Greece</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 5.0 (1.5k)</div>
+                        </div>
+                        <div class="activity-price">₹45,000</div>
+                        <button class="icon-btn" onclick="alert('Exclusive Private Yacht successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <div class="activity-card" data-category="food">
+                        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Le Jules Verne (Michelin Star)</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 4px;">Paris, France</p>
+                            <p style="font-size: 0.8rem; color: var(--primary-color); margin-bottom: 8px;"><strong>Menu:</strong> Escargot, Duck Confit, White Truffle Soufflé, Fine Wine Pairing</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 4.9 (4k)</div>
+                        </div>
+                        <div class="activity-price">₹35,000</div>
+                        <button class="icon-btn" onclick="alert('Le Jules Verne reservation successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+
+                    <div class="activity-card" data-category="food">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Sukiyabashi Jiro (Premium Omakase)</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 4px;">Tokyo, Japan</p>
+                            <p style="font-size: 0.8rem; color: var(--primary-color); margin-bottom: 8px;"><strong>Menu:</strong> 20-course Elite Chef's Selection Sushi, Bluefin Tuna, Hokkaido Uni</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 5.0 (2.5k)</div>
+                        </div>
+                        <div class="activity-price">₹42,500</div>
+                        <button class="icon-btn" onclick="alert('Sukiyabashi Jiro reservation successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+
+                    <div class="activity-card" data-category="food">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=150&q=60">
+                        <div class="activity-details">
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">La Pergola (3-Michelin Stars)</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 4px;">Rome, Italy</p>
+                            <p style="font-size: 0.8rem; color: var(--primary-color); margin-bottom: 8px;"><strong>Menu:</strong> Wagyu Beef Filet, Lobster Carpaccio, Vintage Italian Wine Tasting</p>
+                            <div style="color: #F59E0B; font-size: 0.9rem;"><i class="fa-solid fa-star"></i> 4.9 (3k)</div>
+                        </div>
+                        <div class="activity-price">₹38,000</div>
+                        <button class="icon-btn" onclick="alert('La Pergola reservation successfully added to your trip!')" style="color: var(--primary-color); background: var(--primary-light); width: 36px; height: 36px; border-radius: 50%;"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
